@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Project</title>
+        <link rel="stylesheet" href="style.css" />
+        <script defer src="script.js"></script>
+        <script defer src="data.json"></script>
+    </head>
+    <body>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Balance</th>
+                    <th class="parent">Parent</th>
+                </tr>
+            </thead>
+            <select name="Filter" id="Filter">
+                <option value="0">Choose a fiter</option>
+                <option value="1">Fiter by Having parent</option>
+                <option value="2">Fiter by Active</option>
+            </select>
+            <tbody id="tbody">
+                <!-- <tr>
+                    <td>Gloria</td>
+                    <td>Reeves</td>
+                    <td>67439</td>
+                    <td>10/18/1985</td>
+                </tr> -->
+                <button class="start-btn" id="start-btn">Запустить</button>
+                <div class="span"><span>*try click on Name - parent will be showed</span></div>
+            </tbody>
+        </table>
+    </body>
+</html>
