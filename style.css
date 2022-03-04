@@ -21,7 +21,6 @@
 }
 select {
     padding: 10px;
-    /* background-color: greenyellow; */
     font-size: 16px;
     margin: 30px;
     margin-top: 10px;
@@ -31,13 +30,6 @@ select {
     font-size: 16px;
     margin-left: 20px;
 }
-/* .table tr {
-	font-weight: bold;
-	padding: 5px;
-	background: #F2F8F8;
-	border: none;
-	border-bottom: 5px solid #F2F8F8;
-} */
 .parent-btn {
     width: 50px;
     height: 25px;
@@ -48,6 +40,10 @@ select {
 }
 .pink {
     background-color: pink;
+    font-size: 14px;
+    font-style: italic;
+    font-weight: bold;
+    color: gray;
 }
 .show {
     display: block;
