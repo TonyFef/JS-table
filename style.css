@@ -1,22 +1,22 @@
 .table {
-	width: 80%;
-	margin-bottom: 20px;
-	border: 15px solid #F2F8F8;
-	border-top: 5px solid #F2F8F8;
-	border-collapse: collapse; 
-    font-family: 'Arial', Courier, monospace;
+    width: 80%;
+    margin-bottom: 20px;
+    border: 15px solid #f2f8f8;
+    border-top: 5px solid #f2f8f8;
+    border-collapse: collapse;
+    font-family: "Arial", Courier, monospace;
 }
 .table th {
-	font-weight: bold;
-	padding: 5px;
-	background: #F2F8F8;
-	border: none;
-	border-bottom: 5px solid #F2F8F8;
+    font-weight: bold;
+    padding: 5px;
+    background: #f2f8f8;
+    border: none;
+    border-bottom: 5px solid #f2f8f8;
 }
 .table td {
-	padding: 15px;
-	border: none;
-	border-bottom: 5px solid #F2F8F8;
+    padding: 15px;
+    border: none;
+    border-bottom: 5px solid #f2f8f8;
     text-align: center;
 }
 select {
@@ -39,10 +39,19 @@ select {
 	border-bottom: 5px solid #F2F8F8;
 } */
 .parent-btn {
-	width: 50px;
-	height: 25px;
+    width: 50px;
+    height: 25px;
 }
 .span {
-	margin-left: 20px;
-	margin-bottom: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.pink {
+    background-color: pink;
+}
+.show {
+    display: block;
+}
+.hide {
+    display: none;
 }
