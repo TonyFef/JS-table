@@ -5,6 +5,22 @@ let items;
 let selectedTr;
 
 const data = fetch("data.json");
+
+tbody.addEventListener("click", (e) => {
+    console.log(e.target);
+    let selectedTr2 = e.target.closest("tr");
+    let smth = selectedTr2.querySelectorAll("td")[0].textContent;
+
+    let temp = document.getElementById(`b${smth}`);
+    if (temp == null) {
+        return;
+    } else if (temp.classList.contains("hide")) {
+        temp.classList.remove("hide");
+    } else if (!temp.classList.contains("hide")) {
+        temp.classList.add("hide");
+    }
+});
+
 data.then((response) => response.json()).then((data) => {
     startButton.addEventListener("click", () => {
         counter = 0;
@@ -13,7 +29,6 @@ data.then((response) => response.json()).then((data) => {
     });
 
     tableShower = () => {
-        
         let tableHeader = document.createElement("tr");
         tableHeader.innerHTML = `<th>Position</th><th>Name</th><th>Email</th><th>Balance</th>`;
         tbody.append(tableHeader);
@@ -48,28 +63,7 @@ data.then((response) => response.json()).then((data) => {
                 selectedTr.after(parentShower);
             }
         });
-        onShowParent();
     };
-
-    onShowParent = () => {
-        tbody.addEventListener("click", (e) => {
-            let selectedTr2 = e.target.closest("tr");
-            let smth = selectedTr2.querySelectorAll("td")[0].textContent;
-
-            let temp = document.getElementById(`b${smth}`);
-            if (temp == null) {
-                return;
-            } else if (temp.classList.contains("hide")) {
-                console.log(temp.classList.contains("hide"));
-                temp.classList.remove("hide");
-            } else if (!temp.classList.contains("hide")) {
-                console.log(!temp.classList.contains("hide"));
-                temp.classList.add("hide");
-            }
-        });
-    };
-
-    //
 
     onFilter = () => {
         removeAll();
