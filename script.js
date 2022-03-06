@@ -1,17 +1,23 @@
 const startButton = document.getElementById("start-btn");
-let counter = 0;
+const select = document.getElementById("Filter");
+let counter;
+let items;
+let selectedTr;
 
 const data = fetch("data.json");
 data.then((response) => response.json()).then((data) => {
-    startButton.addEventListener(
-        "click",
-        () => {
-            tableShower();
-        },
-        { once: true }
-    );
+    startButton.addEventListener("click", () => {
+        counter = 0;
+        removeAll();
+        tableShower();
+    });
 
     tableShower = () => {
+        
+        let tableHeader = document.createElement("tr");
+        tableHeader.innerHTML = `<th>Position</th><th>Name</th><th>Email</th><th>Balance</th>`;
+        tbody.append(tableHeader);
+
         data.forEach((elem) => {
             counter++;
             element = document.createElement("tr");
@@ -42,7 +48,6 @@ data.then((response) => response.json()).then((data) => {
                 selectedTr.after(parentShower);
             }
         });
-
         onShowParent();
     };
 
@@ -54,9 +59,59 @@ data.then((response) => response.json()).then((data) => {
             let temp = document.getElementById(`b${smth}`);
             if (temp == null) {
                 return;
-            } else {
-                temp.classList.toggle("hide");
+            } else if (temp.classList.contains("hide")) {
+                console.log(temp.classList.contains("hide"));
+                temp.classList.remove("hide");
+            } else if (!temp.classList.contains("hide")) {
+                console.log(!temp.classList.contains("hide"));
+                temp.classList.add("hide");
             }
+        });
+    };
+
+    //
+
+    onFilter = () => {
+        removeAll();
+
+        let selectedOption = select.options[select.selectedIndex];
+
+        if (selectedOption.text == "Fiter by Active") {
+            onFilterActive();
+        } else if (selectedOption.text == "Fiter by Having parent") {
+            onFilterParent();
+        }
+    };
+
+    onFilterActive = () => {
+        data.forEach((elem) => {
+            let elemIsActive = elem.isActive;
+            if (elemIsActive) {
+                element = document.createElement("tr");
+                element.innerHTML = `<td>${elem.id}</td><td>${elem.name}</td><td>${elem.email}</td><td>${elem.balance}</td>`;
+                tbody.append(element);
+            }
+        });
+    };
+
+    onFilterParent = () => {
+        for (let elem of data) {
+            let isElemChild = elem.parentId;
+            if (isElemChild != 0) {
+                element = document.createElement("tr");
+                element.innerHTML = `<td>${elem.id}</td><td>${elem.name}</td><td>${elem.email}</td><td>${elem.balance}</td>`;
+                tbody.append(element);
+            }
+        }
+    };
+
+    select.addEventListener("change", onFilter);
+
+    removeAll = () => {
+        items = document.querySelectorAll("tr");
+
+        items.forEach((item) => {
+            item.remove();
         });
     };
 });
